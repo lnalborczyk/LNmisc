@@ -8,7 +8,9 @@
 #' @import LaplacesDemon
 #'
 #' @examples
-#' data(mtcars)
+#' prior_scales(prior = "exp(2)")
+#' prior_scales(prior = "norm(0,5)")
+#' prior_scales(prior = "halfcauchy(5)")
 #'
 #' @author Ladislas Nalborczyk <\email{ladislas.nalborczyk@@gmail.com}>
 #'
@@ -28,20 +30,38 @@ prior_scales <- function(prior, ...) {
     JLo2prob <- function(Lo) (exp(Lo) + 1)^2 / exp(Lo)
 
     # wrapper for Jacobian
-    dprob2dLo <- function(Lo, dprob, log = FALSE){
+    dprob2dLo <- function(Lo, dprob, log = FALSE) {
+
         prob <- Lo2prob(Lo)
-        if (log) {dprob(prob) + log(Jprob2Lo(prob) )
-        } else dprob(prob) * Jprob2Lo(prob)
+
+        if (log) {
+
+            dprob(prob) + log(Jprob2Lo(prob) )
+
+            } else {
+
+                dprob(prob) * Jprob2Lo(prob)
+
+            }
+
     }
 
-    dLo2dprob <- function(prob, dLo, log = FALSE){
+    dLo2dprob <- function(prob, dLo, log = FALSE) {
+
         Lo <- prob2Lo(prob)
+
         if (log) {dLo(Lo) + log(JLo2prob(Lo) )
-        } else dLo(Lo) * JLo2prob(Lo)
+
+            } else {
+
+                dLo(Lo) * JLo2prob(Lo)
+
+            }
+
     }
 
     # two-columns plot
-    # par(mfrow = c(1, 2) )
+    par(mfrow = c(1, 2) )
 
     # extracting the distribution and its arguments
     prior_type <- get(paste0("d", sub("\\(.*", "", prior) ) )
@@ -50,13 +70,17 @@ prior_scales <- function(prior, ...) {
     # plotting prior in log-odds scale
     Lo <- seq(-10, 10, 0.1)
     dLo <- eval(parse(text = paste("prior_type(Lo,", prior_args, ")") ) )
+
     plot(x = Lo, y = dLo, type = "l",
         col = "steelblue", lwd = 2, main = prior, xlab = "log-odds", ylab = "")
 
     # plotting prior in proba scale
     prob <- seq(0, 1, 0.01)
-    dprob <- dLo2dprob(prob,
-        dLo = function(Lo) eval(parse(text = paste("prior_type(prob,", prior_args, ")") ) ) )
+    dprob <-
+        dLo2dprob(
+            prob,
+            dLo = function(Lo) eval(parse(text = paste("prior_type(prob,", prior_args, ")") ) ) )
+
     plot(x = prob, y = dprob, type = "l",
         col = "steelblue", lwd = 2, main = prior, xlab = "probability", ylab = "")
 

@@ -9,11 +9,13 @@
 #' @param ylab Label of y-axis
 #'
 #' @import tidyverse
-#' @import dtable
+#' @import gtable
 #' @import grid
 #'
 #' @examples
-#' data(mtcars)
+#' data(howell)
+#' d <- howell
+#' logit_dotplot(d$height, d$male, xlab = "height", ylab = "p(male)")
 #'
 #' @author Ladislas Nalborczyk <\email{ladislas.nalborczyk@@gmail.com}>
 #'
