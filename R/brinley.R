@@ -31,18 +31,18 @@
 #'
 #' @export
 
-library(tidyverse)
-library(effsize)
-library(Rmisc)
-
-data(brinley_data)
-data <- brinley_data
-formula <- outcome ~ session
-facet <- substitute(condition)
-#facet <- NULL
-colour <- substitute(pain)
-background <- TRUE
-CI <- TRUE
+# library(tidyverse)
+# library(effsize)
+# library(Rmisc)
+#
+# data(brinley_data)
+# data <- brinley_data
+# formula <- outcome ~ session
+# facet <- substitute(condition)
+# #facet <- NULL
+# colour <- substitute(pain)
+# background <- TRUE
+# CI <- TRUE
 
 brinley <-
     function(
@@ -101,20 +101,17 @@ brinley <-
         sums <- left_join(means, lower, by = {if (!is.null(facet) ) as.character(facet)} )
         sums <- left_join(sums, upper, by = {if (!is.null(facet) ) as.character(facet)} )
 
-        # computing effect size
-        # group_by(Condition)
+        # computing effect size (cohen's d average)
 
-        #dav <- data %>%
-            #group_by(eval(facet) ) %>% # this line works
-        #    group_by(condition) %>%
-        #    dplyr::summarise(
-        #        dav = cohen.d(formula, paired = FALSE, pooled = TRUE)$estimate)
-            #{ifelse(!is.null(facet), group_by(Condition), .)} %>%
-            #dplyr::summarise(
-            #    dav = cohen.d(formula, paired = FALSE, pooled = TRUE)$estimate,
-            #    dl = cohen.d(formula, paired = FALSE, pooled = TRUE)$conf.int[1],
-            #    du = cohen.d(formula, paired = FALSE, pooled = TRUE)$conf.int[2]
-            #)
+        dav <-
+            data %>%
+            group_by(eval(facet) ) %>% # this line works
+            dplyr::summarise(
+                dav = cohen.d(d = get(lhs), f = get(rhs), paired = FALSE, pooled = TRUE)$estimate,
+                dl = cohen.d(d = get(lhs), f = get(rhs), paired = FALSE, pooled = TRUE)$conf.int[1],
+                du = cohen.d(d = get(lhs), f = get(rhs), paired = FALSE, pooled = TRUE)$conf.int[2]
+                ) %>%
+            dplyr::rename(condition = `eval(facet)`) # modifying this line
 
         #################################################################
         # plotting it
@@ -132,15 +129,15 @@ brinley <-
             # adding identity abline
             geom_abline() +
             # adding effect size (d_av)
-            # geom_label(
-            #     data = dav,
-            #     aes(
-            #         x = 70, y = 10,
-            #         label = paste0(
-            #             "d_av = ", round(dav, 2), " [", round(dl, 2), ", ",
-            #             round(du, 2), "]") ),
-            #     inherit.aes = FALSE,
-            #     size = 5) +
+            geom_label(
+                data = dav,
+                aes(
+                    x = 70, y = 10,
+                    label = paste0(
+                        "d_av = ", round(dav, 2), " [", round(dl, 2), ", ",
+                        round(du, 2), "]") ),
+                inherit.aes = FALSE,
+                size = 5) +
             # vertical error bars
             geom_errorbar(
                 data = sums,
