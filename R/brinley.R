@@ -10,18 +10,20 @@
 #' @param CI Should it plot the confidence intervals ?
 #'
 #' @importFrom effsize cohen.d
+#' @importFrom magrittr %>%
 #' @importFrom Rmisc CI
-#' @import magrittr
 #' @import ggplot2
 #' @import dplyr
 #' @import tidyr
 #'
 #' @examples
+#' \dontrun{
 #' data(brinley_data)
 #'
 #' brinley(
 #' data, formula = outcome ~ session, facet = condition, colour = pain,
 #' background = TRUE, CI = TRUE)
+#' }
 #'
 #' @author Ladislas Nalborczyk <\email{ladislas.nalborczyk@@gmail.com}>
 #'

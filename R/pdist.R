@@ -7,7 +7,8 @@
 #' @param nsims Numer of simulations
 #' @param alpha Alpha level
 #'
-#' @import magrittr
+#' @importFrom stats rnorm t.test
+#' @importFrom magrittr %>%
 #' @import ggplot2
 #'
 #' @examples

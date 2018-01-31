@@ -10,8 +10,6 @@ License: MIT + file LICENSE
 LazyData: yes
 RoxygenNote: 6.0.1
 Depends: R (>= 3.3.0)
-Imports: dplyr, magrittr, tidyr, ggplot2
+Imports: dplyr, magrittr, tidyr, ggplot2, Rmisc, effsize, gtable, tidyverse, LaplacesDemon
 URL: https://github.com/lnalborczyk/lmisc
 BugReports: https://github.com/lnalborczyk/lmisc/issues
-Suggests: knitr, rmarkdown
-VignetteBuilder: knitr
