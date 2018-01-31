@@ -2,10 +2,10 @@ Package: lmisc
 Type: Package
 Title: lnalborcyk miscellaneous
 Version: 0.0.1
-Date: 2018-01-29
+Date: 2018-01-31
 Authors@R: person("Ladislas", "Nalborczyk", email = "ladislas.nalborczyk@gmail.com",
   role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7419-9855"))
-Description: Miscellaneous small functions for data visualisation and other common tasks.
+Description: Miscellaneous functions for data visualisation and other common tasks.
 License: MIT + file LICENSE
 LazyData: yes
 RoxygenNote: 6.0.1
