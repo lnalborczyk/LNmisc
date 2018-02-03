@@ -4,8 +4,7 @@
 \alias{brinley}
 \title{Modified Brinley's plots}
 \usage{
-brinley(data, formula, facet = FALSE, colour = NULL, background = TRUE,
-  CI = TRUE)
+brinley(data, formula, facet = NULL, colour = NULL, background = TRUE)
 }
 \arguments{
 \item{data}{A dataframe containing all relevant variables}
@@ -17,19 +16,17 @@ brinley(data, formula, facet = FALSE, colour = NULL, background = TRUE,
 \item{colour}{A colour... (should be set to NULL otherwise)}
 
 \item{background}{Should the whole dataset be plotted in background ?}
-
-\item{CI}{Should it plot the confidence intervals ?}
 }
 \description{
-Plot...
+Examining within-subject effects using a modified Brinley plot (Blampied, 2017).
 }
 \examples{
 \dontrun{
 data(brinley_data)
 
 brinley(
-data, formula = outcome ~ session, facet = condition, colour = pain,
-background = TRUE, CI = TRUE)
+brinley_data, formula = outcome ~ session, facet = "condition", colour = "pain",
+background = FALSE)
 }
 
 }

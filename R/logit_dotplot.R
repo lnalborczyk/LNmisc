@@ -1,7 +1,8 @@
-#' Plot predictions of a logistic regression model along with raw marginal distributions
+#' Plot predictions of a logistic regression model along with raw
+#' marginal distributions
 #'
-#' Plot...inspired from: https://recology.info/2012/01/logistic-regression-barplot-fig/ and
-#' http://rpubs.com/kohske/dual_axis_in_ggplot2
+#' Plot inspired from: https://recology.info/2012/01/logistic-regression-barplot-fig/
+#' and: http://rpubs.com/kohske/dual_axis_in_ggplot2
 #'
 #' @param x A continuous predictor
 #' @param y A continuous outcome variable
@@ -45,7 +46,6 @@ logit_dotplot <- function(x, y, xlab, ylab) {
         theme_bw(base_size = 12) +
         labs(x = xlab, y = ylab)
 
-
     b <-
         d %>%
         ggplot(aes(x = x, y = y) ) +
@@ -70,7 +70,7 @@ logit_dotplot <- function(x, y, xlab, ylab) {
     g2 <- ggplot_gtable(ggplot_build(b) )
 
     # overlap the panel of 2nd plot on that of 1st plot
-    pp <- c(subset(g1$layout, name == "panel", se = t:r) )
+    pp <- g1$layout %>% filter_("name == 'panel'") %>% select_("t:r")
 
     g <-
         gtable_add_grob(

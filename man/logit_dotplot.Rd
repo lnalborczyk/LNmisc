@@ -2,7 +2,8 @@
 % Please edit documentation in R/logit_dotplot.R
 \name{logit_dotplot}
 \alias{logit_dotplot}
-\title{Plot predictions of a logistic regression model along with raw marginal distributions}
+\title{Plot predictions of a logistic regression model along with raw
+marginal distributions}
 \usage{
 logit_dotplot(x, y, xlab, ylab)
 }
@@ -16,8 +17,8 @@ logit_dotplot(x, y, xlab, ylab)
 \item{ylab}{Label of y-axis}
 }
 \description{
-Plot...inspired from: https://recology.info/2012/01/logistic-regression-barplot-fig/ and
-http://rpubs.com/kohske/dual_axis_in_ggplot2
+Plot inspired from: https://recology.info/2012/01/logistic-regression-barplot-fig/
+and: http://rpubs.com/kohske/dual_axis_in_ggplot2
 }
 \examples{
 data(howell)

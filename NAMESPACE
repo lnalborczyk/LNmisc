@@ -3,8 +3,6 @@
 export(brinley)
 export(logit_dotplot)
 export(pdist)
-export(prior_scales)
-import(LaplacesDemon)
 import(dplyr)
 import(ggplot2)
 import(grid)

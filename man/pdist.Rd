@@ -7,16 +7,17 @@
 pdist(cohensd = 0, n = 50, nsims = 10000, alpha = 0.05)
 }
 \arguments{
-\item{cohensd}{Standardised effect size}
+\item{cohensd}{Effect size (standardised mean difference)}
 
 \item{n}{Sample size (per group)}
 
-\item{nsims}{Numer of simulations}
+\item{nsims}{Number of simulations}
 
 \item{alpha}{Alpha level}
 }
 \description{
-Plot...
+Plotting the distribution of p-values corresponding to a two-independant groups comparison,
+as a function of sample size and effect size.
 }
 \examples{
 pdist(cohensd = 0.5, n = 50, nsims = 1e3, alpha = .05)
