@@ -3,7 +3,7 @@
 lmisc
 =====
 
-[![Build Status](https://travis-ci.org/lnalborczyk/lmisc?branch=master)](https://travis-ci.org/lnalborczyk/lmisc)
+[![Build Status](https://travis-ci.org/lnalborczyk/lmisc.svg?branch=master)](https://travis-ci.org/lnalborczyk/lmisc)
 
 A starting collection of miscellaneous functions for data visualisation and other common tasks.
 
