@@ -132,10 +132,11 @@ brinley <- function(data, formula, facet = NULL, colour = NULL, background = TRU
         geom_label(
             data = dav,
             aes(
-                x = 70, y = 10,
+                x = -Inf, y = Inf,
                 label = paste0(
                     "d = ", round(dav, 2), " [", round(dl, 2), ", ",
-                    round(du, 2), "]") ),
+                    round(du, 2), "]"),
+                hjust = 0, vjust = 1),
             inherit.aes = FALSE,
             size = 5) +
         # vertical error bars
@@ -164,5 +165,3 @@ brinley <- function(data, formula, facet = NULL, colour = NULL, background = TRU
         theme_bw(base_size = 14)
 
 }
-
-
