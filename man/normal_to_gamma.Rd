@@ -16,7 +16,7 @@ Plotting two distributions. A Normal distribution and a Gamma distribution
 with same mean and standard deviation.
 }
 \examples{
-normal_to_gamma(mu = 5, sigma = 10)
+normal_to_gamma(mu = 50, sigma = 10)
 
 }
 \author{

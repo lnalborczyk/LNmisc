@@ -11,7 +11,7 @@
 #' @import ggplot2
 #'
 #' @examples
-#' normal_to_gamma(mu = 5, sigma = 10)
+#' normal_to_gamma(mu = 50, sigma = 10)
 #'
 #' @author Ladislas Nalborczyk <\email{ladislas.nalborczyk@@gmail.com}>
 #'

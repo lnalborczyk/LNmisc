@@ -16,13 +16,14 @@
 #' @import tidyr
 #'
 #' @examples
-#' \dontrun{
 #' data(brinley_data)
 #'
 #' brinley(
 #' brinley_data, formula = outcome ~ session, facet = "condition", colour = "pain",
 #' background = FALSE)
-#' }
+#'
+#' data(dominance)
+#' brinley(data = dominance, formula = value ~ group, facet = "exp")
 #'
 #' @author Ladislas Nalborczyk <\email{ladislas.nalborczyk@@gmail.com}>
 #'
