@@ -21,6 +21,7 @@ brinley(data, formula, facet = NULL, colour = NULL, background = TRUE)
 Examining within-subject effects using a modified Brinley plot (Blampied, 2017).
 }
 \examples{
+\dontrun{
 data(brinley_data)
 
 brinley(
@@ -29,6 +30,7 @@ background = FALSE)
 
 data(dominance)
 brinley(data = dominance, formula = value ~ group, facet = "exp")
+}
 
 }
 \references{
