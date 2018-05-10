@@ -154,6 +154,7 @@ brinley <- function(data, formula, facet = NULL, colour = NULL, background = TRU
         geom_errorbarh(
             data = sums,
             aes_string(
+                x = paste0(rhs, "_", lev[1]),
                 y = paste0(rhs, "_", lev[2]),
                 xmin = paste0(rhs, "l", lev[1]),
                 xmax = paste0(rhs, "u", lev[1]) ),
