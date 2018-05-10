@@ -14,8 +14,7 @@
 #' @import grid
 #'
 #' @examples
-#' data(howell)
-#' d <- howell
+#' d <- get(data(howell) )
 #' logit_dotplot(d$height, d$male, xlab = "height", ylab = "p(male)")
 #'
 #' @author Ladislas Nalborczyk <\email{ladislas.nalborczyk@@gmail.com}>
